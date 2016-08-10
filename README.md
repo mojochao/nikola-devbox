@@ -5,7 +5,7 @@
 This project provides a vagrant linux vm (ubuntu 16.04 LTS) provisioned
 for use with [Nikola](https://getnikola.com/) called *nikola-devbox*.
 
-## Installation
+## Usage
 
 Open a 'Git Bash' window and clone this project in your projects
 directory, and then *cd* to the newly cloned project directory.
@@ -15,10 +15,18 @@ $ cd ~/projects
 $ git clone https://github.com/mojochao/nikola-devbox.git
 ```
 
-Next, in the *nikola-devbox* directory, setup the vagrant box.
+Since we're using this as a boilerplate project, you should go ahead
+and re-initialize the repo for your use.
 
 ```shell
 $ cd nikola-devbox
+$ rm -rf .git
+$ git init
+```
+
+Next, in the *nikola-devbox* directory, setup the vagrant box.
+
+```shell
 $ vagrant plugin install vagrant-scp
 $ vagrant plugin install vagrant-vbguest
 $ vagrant up
