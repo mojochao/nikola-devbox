@@ -7,16 +7,18 @@ for use with [Nikola](https://getnikola.com/) called *nikola-devbox*.
 
 ## Installation
 
-Clone the project somewhere and change to the project directory.
+Open a 'Git Bash' window and clone this project in your projects
+directory, and then *cd* to the newly cloned project directory.
 
 ```shell
+$ cd ~/projects
 $ git clone https://github.com/mojochao/nikola-devbox.git
-$ cd nikola-devbox
 ```
 
-Next, setup the vagrant box.
+Next, in the *nikola-devbox* directory, setup the vagrant box.
 
 ```shell
+$ cd nikola-devbox
 $ vagrant plugin install vagrant-scp
 $ vagrant plugin install vagrant-vbguest
 $ vagrant up
