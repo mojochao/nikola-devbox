@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network "forwarded_port", guest: 80, host: 8080    # for nginx
-  config.vm.network "forwarded_port", guest: 8000, host: 8000  # for nikola server
+  config.vm.network "forwarded_port", guest: 8000, host: 8000  # for nikola
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -40,20 +40,20 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "./site", "/home/ubuntu/site"
+  config.vm.synced_folder ".", "/home/ubuntu/repo"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
-  #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
-  #
+  config.vm.provider "virtualbox" do |vb|
+    # Display the VirtualBox GUI when booting the machine
+    # vb.gui = true
+  
+    # Customize the amount of memory on the VM:
+    vb.memory = "1024"
+  end
+  
   # View the documentation for the provider you are using for more
   # information on available options.
 
@@ -69,11 +69,9 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    apt-get install -y build-essentials
-    apt-get install -y libxml2-dev
-    apt-get install -y python3-dev
-    apt-get install -y python3-lxml
-    apt-get install -y zlib1g-dev
-    pip install nikola
+    apt-get install -y git
+    apt-get install -y nginx
+    apt-get install -y nikola
+    apt-get autoremove
   SHELL
 end
